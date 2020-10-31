@@ -21,6 +21,14 @@
 		"url": "https://www.github.com/trond-snekvik/vscode-gnu-map",
 		"type": "git"
 	},
+	"keywords": [
+		"GNU",
+		"Linker",
+		"Mapfile",
+		"Map",
+		"ld",
+		"GCC"
+	],
 	"activationEvents": [
 		"onLanguage:mapfile"
 	],
