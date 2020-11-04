@@ -83,7 +83,7 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 					}
 				}
 
-				const path = line.match(/^((?:[A-Za-z]:\/|\/)?(?:[.\w-]+[\/])+[.\w-]+)(?:\((.*?)\))?/);
+				const path = line.match(/^((?:[A-Za-z]:\/|\/)?(?:[~+$%&.\w-]+[\\/])+[~+$%&.\w-]+)(?:\((.*?)\))?/);
 				if (path) {
 					const range = new vscode.Range(number, 0, number, line.length);
 					const entry = new vscode.DocumentSymbol(path[1], path[2] ?? '', vscode.SymbolKind.File, range, range);
