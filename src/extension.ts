@@ -22,9 +22,12 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 			if (continuesOnNextLine) {
 				if (!line.match(/^\s*\.[\w+]/)) {
 					if (!continuesOnNextLine.name.length) {
-						const obj = line.match(/.*\(([\w.-]*?)\)/)?.[1];
-						if (obj) {
-							continuesOnNextLine.name = obj;
+						const obj = line.match(/.*(?:\(([\w.-]*?)\))?/);
+						const path = obj?.[0].trim().split(/\s+/g).pop()?.split(/[\\/]/g).pop();
+						if (obj?.[1]) {
+							continuesOnNextLine.name = obj[1];
+						} else if (path) {
+							continuesOnNextLine.name = path;
 						} else {
 							continuesOnNextLine.name = continuesOnNextLine.detail; // fallback
 							continuesOnNextLine.detail = '';
@@ -86,7 +89,7 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 				const path = line.match(/^((?:[A-Za-z]:\/|\/)?(?:[~+$%&.\w-]+[\\/])+[~+$%&.\w-]+)(?:\((.*?)\))?/);
 				if (path) {
 					const range = new vscode.Range(number, 0, number, line.length);
-					const entry = new vscode.DocumentSymbol(path[1], path[2] ?? '', vscode.SymbolKind.File, range, range);
+					const entry = new vscode.DocumentSymbol(path[2] ?? path[1], path[2] ? path[1] : '', vscode.SymbolKind.File, range, range);
 					section.entries.push(entry);
 					return;
 				}
@@ -114,7 +117,7 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 						entry.detail = subSymbol[3];
 					} else if (subSymbol[4]) {
 						entry.detail = entry.name;
-						entry.name = subSymbol[4].trim().split(/\s+/g).pop() ?? entry.name;
+						entry.name = subSymbol[4].trim().split(/\s+/g).pop()?.split(/[\\/]/g).pop() ?? entry.name;
 					} else {
 						continuesOnNextLine = entry;
 					}
