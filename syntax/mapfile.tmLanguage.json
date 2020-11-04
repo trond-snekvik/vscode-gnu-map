@@ -67,7 +67,7 @@
 			"name": "string.quoted.double"
 		},
 		"keyword": {
-			"match": "(\\(size before relaxing\\)|\\*fill\\*|LOAD linker stubs|\\/DISCARD\\/|LOADADDR|ALIGN|PROVIDE|SIZEOF|SORT_BY_(NAME|ALIGNMENT)|\\[!provide\\]|LOAD|OUTPUT)",
+			"match": "(\\(size before relaxing\\)|\\*fill\\*|LOAD linker stubs|\\/DISCARD\\/|COMMON|CONSTRUCTORS|load address|linker stubs|LOADADDR|ALIGN|START GROUP|END GROUP|EXCLUDE_FILE|SECTIONS|PROVIDE|SIZEOF|SORT_BY_(NAME|ALIGNMENT|INIT_PRIORITY)|SORT_NONE|SORT|\\[!provide\\]|LOAD|OUTPUT)",
 			"name": "constant.language"
 		},
 		"section": {

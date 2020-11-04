@@ -71,7 +71,7 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 					}
 				}
 
-				const operator = line.match(/^(LOAD|\/DISCARD\/|OUTPUT)\s*(.*)/);
+				const operator = line.match(/^(LOAD|\/DISCARD\/|OUTPUT|START|END|COMMON)\s*(.*)/);
 				if (operator) {
 					const range = new vscode.Range(number, 0, number, line.length);
 					const entry = new vscode.DocumentSymbol(operator[1], operator[2], vscode.SymbolKind.Method, range, range);
