@@ -3,6 +3,7 @@
 	"patterns": [
 		{"include": "#title"},
 		{"include": "#memory-config"},
+		{"include": "#common-symbols"},
 		{"include": "#object"},
 		{"include": "#flag"},
 		{"include": "#number"},
@@ -14,8 +15,12 @@
 	],
 	"repository": {
 		"title": {
-			"match": "^(Discarded input sections|Archive member included to satisfy reference by file \\(symbol\\)|Memory Configuration|Linker script and memory map)$",
+			"match": "^(Discarded input sections|Archive member included to satisfy reference by file \\(symbol\\)|Memory Configuration|Linker script and memory map|Allocating common symbols)$",
 			"name": "markup.heading"
+		},
+		"common-symbols": {
+			"match": "^Common\\s+symbol\\s+size\\s+file$",
+			"name": "markup.underline"
 		},
 		"memory-config": {
 			"begin": "^Name\\s+Origin\\s+Length\\s+Attributes$",

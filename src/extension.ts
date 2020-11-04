@@ -46,7 +46,7 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 
 			const section = sections[sections.length - 1];
 
-			const heading = line.match(/^(Discarded input sections|Archive member included to satisfy reference by file \(symbol\)|Memory Configuration|Linker script and memory map)$/);
+			const heading = line.match(/^(Discarded input sections|Archive member included to satisfy reference by file \(symbol\)|Memory Configuration|Linker script and memory map|Allocating common symbols)$/);
 			if (heading) {
 				// End the previous section on the previous line:
 				if (section) {
@@ -77,9 +77,9 @@ class SymbolParser implements vscode.DocumentSymbolProvider {
 				}
 
 				if (!section.entries.length) {
-					const memConfig = line.match(/^Name\s+Origin\s+Length\s+Attributes$/);
-					if (memConfig) {
-						return; // Ignore memory configuration header
+					const tableHeaders = line.match(/^(Name\s+Origin\s+Length\s+Attributes|Common\s+symbol\s+size\s+file)$/);
+					if (tableHeaders) {
+						return; // Ignore header
 					}
 				}
 
