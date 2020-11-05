@@ -2,7 +2,7 @@
 	"name": "gnu-mapfiles",
 	"displayName": "GNU Linker Map files",
 	"description": "Syntax highlighting and symbol listing for GNU linker .map files",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
