@@ -15,7 +15,7 @@
 	],
 	"repository": {
 		"title": {
-			"match": "^(Discarded input sections|Archive member included to satisfy reference by file \\(symbol\\)|Memory Configuration|Linker script and memory map|Allocating common symbols)$",
+			"match": "^(Discarded input sections|Archive member included to satisfy reference by file \\(symbol\\)|Memory Configuration|Linker script and memory map|Allocating common symbols|Cross Reference Table)$",
 			"name": "markup.heading"
 		},
 		"common-symbols": {
